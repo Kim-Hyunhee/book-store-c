@@ -19,7 +19,6 @@ export const createClient = (config?: AxiosRequestConfig) => {
       return response;
     },
     (error) => {
-      console.error('Error fetching category:', error);
       return Promise.reject(error);
     }
   );
