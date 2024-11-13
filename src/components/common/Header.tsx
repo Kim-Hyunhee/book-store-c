@@ -24,7 +24,7 @@ function Header() {
                 to={
                   item.categoryId === null
                     ? '/books'
-                    : `/books?category_id=${item.categoryId}`
+                    : `/books?categoryId=${item.categoryId}`
                 }
               >
                 {item.categoryName}
