@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import logo from '../../assets/images/logo.jpg';
+import logo from '../../assets/images/logo.png';
 import { FaSignInAlt, FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useCategory } from '../../hooks/useCategory';
