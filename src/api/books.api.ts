@@ -1,5 +1,6 @@
 import { Book, BookDetail } from '../models/book.model';
 import { Pagination } from '../models/pagination.model';
+import { getToken } from '../store/authStore';
 import { httpClient } from './http';
 
 interface FetchBooksParams {
@@ -39,13 +40,28 @@ export const fetchBook = async (bookId: string) => {
 };
 
 export const likeBook = async (bookId: number) => {
-  const response = await httpClient.post(`/likes/${bookId}`);
+  const token = getToken();
+
+  const response = await httpClient.post(
+    `/likes/${bookId}`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
   return response.data;
 };
 
 export const unlikeBook = async (bookId: number) => {
-  const response = await httpClient.delete(`/likes/${bookId}`);
+  const token = getToken();
+  const response = await httpClient.delete(`/likes/${bookId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   return response.data;
 };
