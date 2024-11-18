@@ -16,7 +16,16 @@ interface FetchBooksResponse {
 
 export const fetchBooks = async (params: FetchBooksParams) => {
   try {
-    return await requestHandler<FetchBooksParams>('get', '/books', params);
+    const updatedParams = {
+      ...params,
+      news: params.news !== undefined ? params.news : undefined,
+    };
+
+    return await requestHandler<FetchBooksParams>(
+      'get',
+      '/books',
+      updatedParams
+    );
   } catch (error) {
     return {
       books: [],
