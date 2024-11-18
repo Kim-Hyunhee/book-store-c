@@ -148,16 +148,16 @@ export const CartStyle = styled.div`
       display: flex;
       justify-content: start;
       gap: 8px;
-    }
 
-    label {
-      width: 80px;
-    }
+      label {
+        width: 80px;
+      }
 
-    .input {
-      flex: 1;
-      input {
-        width: 100%;
+      .input {
+        flex: 1;
+        input {
+          width: 100%;
+        }
       }
     }
 
