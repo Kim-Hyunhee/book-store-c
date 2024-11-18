@@ -36,3 +36,44 @@ export const createClient = (config?: AxiosRequestConfig) => {
 };
 
 export const httpClient = createClient();
+
+// 공통 요청 부분
+type RequestMethod = 'get' | 'post' | 'put' | 'delete';
+
+interface RequestOptions {
+  headers?: Record<string, string>;
+  tokenRequired?: boolean;
+}
+
+export const requestHandler = async <T>(
+  method: RequestMethod,
+  url: string,
+  payload?: T,
+  options: RequestOptions = {}
+) => {
+  const { headers = {}, tokenRequired = false } = options;
+
+  if (tokenRequired) {
+    const token = getToken();
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  let response;
+
+  switch (method) {
+    case 'post':
+      response = await httpClient.post(url, payload, { headers });
+      break;
+    case 'get':
+      response = await httpClient.get(url, { headers });
+      break;
+    case 'put':
+      response = await httpClient.put(url, payload, { headers });
+      break;
+    case 'delete':
+      response = await httpClient.delete(url, { headers });
+      break;
+  }
+
+  return response.data;
+};
