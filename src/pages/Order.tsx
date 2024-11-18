@@ -28,7 +28,7 @@ function Order() {
     formState: { errors },
   } = useForm<DeliveryForm>();
 
-  const hendlePay = (data: DeliveryForm) => {
+  const handlePay = (data: DeliveryForm) => {
     const orderData: OrderSheet = {
       ...orderDataFromCart,
       delivery: {
@@ -40,7 +40,7 @@ function Order() {
     showConfirm('주문을 진행하시겠습니까?', () => {
       order(orderData).then(() => {
         showAlert('주문이 처리되었습니다.');
-        navigate('/orders');
+        navigate('/orderList');
       });
     });
   };
@@ -127,7 +127,7 @@ function Order() {
           <Button
             size="large"
             scheme="primary"
-            onClick={handleSubmit(hendlePay)}
+            onClick={handleSubmit(handlePay)}
           >
             결제하기
           </Button>
