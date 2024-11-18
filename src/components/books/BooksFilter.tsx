@@ -41,7 +41,6 @@ function BooksFilter() {
             scheme={item.isActive ? 'primary' : 'normal'}
             key={item.categoryId}
             onClick={() => {
-              console.log('Button clicked:', item.categoryId);
               handleCategory(item.categoryId);
             }}
           >
@@ -52,7 +51,7 @@ function BooksFilter() {
       <div className="new">
         <Button
           size="medium"
-          scheme={searchParams.get('news') ? 'primary' : 'normal'}
+          scheme={searchParams.get(QUERYSTRING.NEWS) ? 'primary' : 'normal'}
           onClick={() => handleNews()}
         >
           신간

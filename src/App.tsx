@@ -1,5 +1,4 @@
 import Layout from './components/layout/Layout';
-import Home from './pages/Home';
 import { BookStoreThemeProvider } from './context/themeContext';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Error from './components/common/Error';
@@ -11,6 +10,9 @@ import BookDetail from './pages/BookDetail';
 import Cart from './pages/Cart';
 import Order from './pages/Order';
 import OrderList from './pages/OrderList';
+import Home from './pages/Home';
+import { QueryClientProvider } from 'react-query';
+import { queryClient } from './api/queryClient';
 
 const routeList = [
   {
@@ -63,9 +65,11 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <BookStoreThemeProvider>
-      <RouterProvider router={router} />
-    </BookStoreThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <BookStoreThemeProvider>
+        <RouterProvider router={router} />
+      </BookStoreThemeProvider>
+    </QueryClientProvider>
   );
 }
 

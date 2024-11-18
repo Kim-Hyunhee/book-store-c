@@ -65,7 +65,11 @@ export const requestHandler = async <T>(
       response = await httpClient.post(url, payload, { headers });
       break;
     case 'get':
-      response = await httpClient.get(url, { headers });
+      const config = {
+        headers,
+        params: payload,
+      };
+      response = await httpClient.get(url, config);
       break;
     case 'put':
       response = await httpClient.put(url, payload, { headers });

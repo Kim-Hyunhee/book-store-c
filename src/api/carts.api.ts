@@ -1,6 +1,5 @@
 import { Cart } from '../models/cart.model';
-import { getToken } from '../store/authStore';
-import { httpClient } from './http';
+import { requestHandler } from './http';
 
 interface AddCartParams {
   bookId: number;
@@ -8,34 +7,19 @@ interface AddCartParams {
 }
 
 export const addCart = async (params: AddCartParams) => {
-  const token = getToken();
-  const response = await httpClient.post('/carts', params, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+  return await requestHandler('post', '/carts', {
+    tokenRequired: true,
   });
-
-  return response.data;
 };
 
 export const fetchCart = async () => {
-  const token = getToken();
-  const response = await httpClient.get<Cart[]>('/carts', {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+  return await requestHandler('get', '/carts', {
+    tokenRequired: true,
   });
-
-  return response.data;
 };
 
 export const deleteCart = async (cartId: number) => {
-  const token = getToken();
-  const response = await httpClient.delete(`/carts/${cartId}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+  return await requestHandler('delete', `/carts/${cartId}`, {
+    tokenRequired: true,
   });
-
-  return response.data;
 };
