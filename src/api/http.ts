@@ -75,7 +75,7 @@ export const requestHandler = async <T>(
       response = await httpClient.put(url, payload, { headers });
       break;
     case 'delete':
-      response = await httpClient.delete(url, { headers });
+      response = await httpClient.delete(url, { headers, data: payload });
       break;
   }
 

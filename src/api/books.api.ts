@@ -42,13 +42,23 @@ export const fetchBook = async (bookId: string) => {
 };
 
 export const likeBook = async (bookId: number) => {
-  return await requestHandler('post', `/likes/${bookId}`, {
-    tokenRequired: true,
-  });
+  return await requestHandler(
+    'post',
+    `/likes/${bookId}`,
+    {},
+    {
+      tokenRequired: true,
+    }
+  );
 };
 
 export const unlikeBook = async (bookId: number) => {
-  return await requestHandler('delete', `/likes/${bookId}`, {
-    tokenRequired: true,
-  });
+  return await requestHandler(
+    'delete',
+    `/likes/${bookId}`,
+    {},
+    {
+      tokenRequired: true,
+    }
+  );
 };
