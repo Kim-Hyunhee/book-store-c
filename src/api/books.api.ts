@@ -14,7 +14,9 @@ interface FetchBooksResponse {
   pagination: Pagination;
 }
 
-export const fetchBooks = async (params: FetchBooksParams) => {
+export const fetchBooks = async (
+  params: FetchBooksParams
+): Promise<FetchBooksResponse> => {
   try {
     const updatedParams = {
       ...params,
