@@ -51,7 +51,7 @@ const bookInfoList = [
 
 function BookDetail() {
   const { bookId } = useParams();
-  const { book, likeToggle, reviews } = useBook(bookId);
+  const { book, likeToggle, reviews, addReview } = useBook(bookId);
 
   if (!book) return null;
 
@@ -92,7 +92,7 @@ function BookDetail() {
         <p className="index">{book.contents}</p>
 
         <Title size="medium">리뷰</Title>
-        <BookReview reviews={reviews} />
+        <BookReview reviews={reviews} onAdd={addReview} />
       </div>
     </BookDetailStyle>
   );
@@ -131,9 +131,6 @@ const BookDetailStyle = styled.div`
         }
       }
     }
-  }
-
-  .content {
   }
 `;
 
