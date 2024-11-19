@@ -38,7 +38,7 @@ export const fetchBooks = async (params: FetchBooksParams) => {
 };
 
 export const fetchBook = async (bookId: string) => {
-  return await requestHandler<FetchBooksResponse>('get', `/books/${bookId}`);
+  return await requestHandler<BookDetail>('get', `/books/${bookId}`);
 };
 
 export const likeBook = async (bookId: number) => {
