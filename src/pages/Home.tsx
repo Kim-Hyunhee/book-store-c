@@ -4,13 +4,15 @@ import MainReview from '../components/main/MainReview';
 import { useMain } from '../hooks/useMain';
 import styled from 'styled-components';
 import MainBest from '../components/main/MainBest';
+import Banner from '../components/common/banner/Banner';
 
 function Home() {
-  const { reviews, newBooks, bestBooks } = useMain();
+  const { reviews, newBooks, bestBooks, banners } = useMain();
 
   return (
     <HomeStyle>
       {/* 배너 */}
+      <Banner banners={banners} />
       {/* 베스트 셀러 */}
       <section className="section">
         <Title size="large">베스트 셀러</Title>
