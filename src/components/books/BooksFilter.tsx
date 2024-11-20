@@ -69,6 +69,13 @@ const BooksFilterStyle = styled.div`
     display: flex;
     gap: 8px;
   }
+
+  @media screen AND ${({ theme }) => theme.mediaQuery.mobile} {
+    .category {
+      display: flex;
+      gap: 4px;
+    }
+  }
 `;
 
 export default BooksFilter;
